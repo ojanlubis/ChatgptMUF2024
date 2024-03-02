@@ -2,7 +2,8 @@ async function sendMessage() {
     const userInput = document.getElementById('userInput').value;
     const responseContainer = document.getElementById('response');
 
-    const response = await fetch('API_ENDPOINT', {
+    const response = await fetch('https://api.openai.com/v1/engines/davinci-codex/completions
+', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
