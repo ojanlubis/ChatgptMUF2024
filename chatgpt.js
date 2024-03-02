@@ -5,7 +5,7 @@ async function sendToChatGPT(message) {
     const response = await fetch('https://api.openai.com/v1/completions', {
         method: 'POST',
         headers: {
-            'Authorization': `Bearer ${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}`,
+            'Authorization': `Bearer ${OPENAI_API_KEY}`,
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
