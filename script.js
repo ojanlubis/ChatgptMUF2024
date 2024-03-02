@@ -16,7 +16,7 @@ async function getChatGPTResponse(message) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer YOUR_OPENAI_API_KEY'
+                'Authorization': 'Bearer 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'
             },
             body: JSON.stringify({
                 model: 'text-davinci-003', // You can choose another model if needed
