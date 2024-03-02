@@ -1,25 +1,21 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Inisialisasi elemen UI di sini
-});
+async function sendMessage() {
+    const userInput = document.getElementById('userInput').value;
+    const responseContainer = document.getElementById('response');
 
-async function sendMessage(message) {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetch('API_ENDPOINT', {
         method: 'POST',
         headers: {
-            'Authorization': `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`,
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer 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'
         },
         body: JSON.stringify({
-            model: "gpt-3.5-turbo",
-            prompt: message,
+            prompt: userInput,
             temperature: 0.5,
             max_tokens: 100
         })
     });
 
     const data = await response.json();
-    // Tampilkan respons di UI
-}
 
-// Fungsi untuk mengirim pesan ke ChatGPT
-// Pastikan untuk mengganti 'YOUR_API_KEY_HERE' dengan API Key yang Anda dapatkan dari OpenAI.
+    responseContainer.innerHTML = `<p>${data.choices[0].text}</p>`;
+}
