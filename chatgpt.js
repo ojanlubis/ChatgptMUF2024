@@ -20,7 +20,14 @@ async function sendToChatGPT(message) {
     });
 
     if (!response.ok) {
-        const errorDetails = await response.text(); // Atau response.json() jika respons menyertakan JSON
+            throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.choices[0].text.trim();
+}
+if (!response.ok) {
+    const errorDetails = await response.text(); // Atau response.json() jika respons menyertakan JSON
     console.error('Error response:', errorDetails);
     throw new Error(`HTTP error! status: ${response.status}`);
 }
