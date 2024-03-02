@@ -9,7 +9,7 @@ async function sendToChatGPT(message) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            model: "davinci-002",
+            model: "text-davinci-002",
             prompt: message,
             temperature: 0.7,
             max_tokens: 150,
