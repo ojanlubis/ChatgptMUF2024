@@ -1,56 +1,25 @@
-// WARNING: Jangan pernah menyimpan API Key Anda langsung di kode klien dalam produksi!
-const OPENAI_API_KEY = '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';
+document.addEventListener('DOMContentLoaded', function() {
+    // Inisialisasi elemen UI di sini
+});
 
-async function sendToChatGPT(message) {
-    const response = await fetch('https://api.openai.com/v1/completions', {
+async function sendMessage(message) {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
-            'Authorization': `Bearer ${OPENAI_API_KEY}`,
+            'Authorization': `Bearer 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`,
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            model: "gpt-3.5-turbo-0125",
+            model: "gpt-3.5-turbo",
             prompt: message,
-            temperature: 0.7,
-            max_tokens: 150,
-            top_p: 1.0,
-            frequency_penalty: 0.0,
-            presence_penalty: 0.0
+            temperature: 0.5,
+            max_tokens: 100
         })
     });
 
-    if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
     const data = await response.json();
-    return data.choices[0].text.trim();
+    // Tampilkan respons di UI
 }
 
-
-// Contoh penggunaan:
-document.getElementById('chat-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const input = document.getElementById('chat-input');
-    const message = input.value;
-    if (message) {
-        displayMessage(message, 'user');
-        try {
-            const botResponse = await sendToChatGPT(message);
-            displayMessage(botResponse, 'bot');
-        } catch (error) {
-            console.error('Error:', error);
-            displayMessage('Maaf, terjadi kesalahan saat berkomunikasi dengan ChatGPT.', 'bot');
-        }
-    }
-    input.value = ''; // Bersihkan input setelah dikirim
-});
-
-function displayMessage(message, sender) {
-    const chatBox = document.getElementById('chat-box');
-    const messageElement = document.createElement('div');
-    messageElement.classList.add('message');
-    messageElement.innerHTML = `<span class="${sender}">${sender === 'user' ? 'Anda' : 'ChatGPT'}: </span>${message}`;
-    chatBox.appendChild(messageElement);
-    chatBox.scrollTop = chatBox.scrollHeight; // Scroll ke pesan terbaru
-}
+// Fungsi untuk mengirim pesan ke ChatGPT
+// Pastikan untuk mengganti 'YOUR_API_KEY_HERE' dengan API Key yang Anda dapatkan dari OpenAI.
