@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatGPT Integration</title>
+    <title>Chat dengan ChatGPT</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>ChatGPT Integration Example</h1>
-    <div id="chat-container">
-        <!-- Chat UI akan diletakkan di sini -->
+    <div class="chat-container">
+        <div id="chat-box" class="chat-box"></div>
+        <form id="chat-form">
+            <input type="text" id="chat-input" autocomplete="off" placeholder="Ketik pesanmu di sini..." required />
+            <button type="submit">Kirim</button>
+        </form>
     </div>
     <script src="chatgpt.js"></script>
 </body>
