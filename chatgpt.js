@@ -9,7 +9,7 @@ async function sendToChatGPT(message) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            model: "gpt-3.5-turbo",
+            model: "gpt-3.5-turbo-0125",
             prompt: message,
             temperature: 0.7,
             max_tokens: 150,
@@ -26,11 +26,7 @@ async function sendToChatGPT(message) {
     const data = await response.json();
     return data.choices[0].text.trim();
 }
-if (!response.ok) {
-    const errorDetails = await response.text(); // Atau response.json() jika respons menyertakan JSON
-    console.error('Error response:', errorDetails);
-    throw new Error(`HTTP error! status: ${response.status}`);
-}
+
 
 // Contoh penggunaan:
 document.getElementById('chat-form').addEventListener('submit', async function(e) {
