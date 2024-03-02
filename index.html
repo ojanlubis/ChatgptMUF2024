@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatGPT Integration Example</title>
+    <title>ChatGPT Integration</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>ChatGPT Integration Example</h1>
-    <textarea id="userInput" placeholder="Type your message here..."></textarea>
-    <button onclick="sendMessage()">Send</button>
-    <div id="response"></div>
-
-    <script src="chatgpt.js"></script>
+    <div class="chat-container">
+        <div id="chat-box"></div>
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
