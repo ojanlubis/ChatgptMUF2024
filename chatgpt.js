@@ -1,5 +1,5 @@
 // WARNING: Jangan pernah menyimpan API Key Anda langsung di kode klien dalam produksi!
-const OPENAI_API_KEY = 'your_openai_api_key_here';
+const OPENAI_API_KEY = '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';
 
 async function sendToChatGPT(message) {
     const response = await fetch('https://api.openai.com/v1/completions', {
